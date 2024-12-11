@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">برسی سفارش...</h1>
+            <p class="lead fw-normal text-white-50 mb-0">این به طور موقت هست</p>
+        </div>
+    </div>
+</header>
+<br/>
+<div class="container">
+    <div class="row justify-content-center"> 
+        <div class="col-md-6">
+           <div class="card">
+               <div class="card-header">
+                  اطلاعات نهایی سفارش
+               </div>
+               <div class="card-body">
+                {% for product in cart_products %}
+                    {{ product.name }}:
+                      {% if product.is_sale %}
+                      <p class="card-text">💰 قیمت: <strike>{{ product.price | intcomma }}</strike> - {{ product.sale_price | intcomma }}</p>
+
+                      {% else %}
+                      <p class="card-text">💰 قیمت:{{ product.price | intcomma }} تومان</p>
+                    {% endif %}
+               
+                    <br>
+                    تعداد:
+                    {% for key,value in quantities.items %}
+                       {% if key == product.id|slugify %}
+                             {{ value }}
+                       {% endif %}
+                    {% endfor %}
+                    <br><br>
+                    <!-- btn btn-primary
+                    "btn btn-sm btn-outline-primary" -->
+
+                {% endfor %}
+                <h5><b>مجموع کل سفارشات: {{total | intcomma}}  تومان</b></h5>
+                <br><br>
+                <a href="{% url 'cart_summary' %}"class="btn btn-outline-primary">ویرایش محصولات</a>
+               </div>
+           </div>
+<br><br>
+<div class="card">
+    <div class="card-header">
+      اطلاعات ارسال
+    </div>
+    <div class="card-body">
+       
+           
+       نام و نام خانوادگی: {{ shipping_info.shipping_full_name}}<br>
+       ایمیل:{{ shipping_info.shipping_email}}<br>
+       آدرس:{{ shipping_info.shipping_address1}}<br>
+       شهر:{{ shipping_info.shipping_city}}<br>
+       استان:{{ shipping_info.shipping_state}}<br>
+       کدپستی:{{ shipping_info.shipping_zipcode}}<br>
+       کشور:{{ shipping_info.shipping_country}}<br>
+       <br>
+       <a href="{%url 'checkout'%}" class="btn btn-outline-primary">ویرایش اطلاعات</a>
+
+        
+    </div>
+  </div>
+<br><br>
+
+<div class="card">
+    <div class="card-header">
+      اطلاعات پرداخت
+    </div>
+    <div class="card-body">
+        <form  method="POST" action="{% url 'process_order' %}">
+            {% csrf_token %}
+        {{  billing_form.as_p }}
+        
+    </div>
+  </div>
+<br>
+
+
+<button type="submit" class="btn btn-success">پرداخت نهایی</button>
+</form>
+
+<br><br>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -29,7 +29,7 @@ To run the application locally:
 
 1. Clone the repository:
    
-   git clone https://github.com/ALIshabani77/Online-Shop.git
+   git clone https://github.com/ALIshabani77/Online_Shop.git
    
 2. Navigate to the project directory:
    

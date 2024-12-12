@@ -44,6 +44,7 @@ To run the application locally:
    python manage.py runserver
    
 5. Open the application in your web browser: `http://localhost:8000`
+
   ```
 ## Usage
 

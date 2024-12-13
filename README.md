@@ -17,11 +17,11 @@ A web-based e-commerce platform built using Python, Django, HTML, and CSS. The s
 
 ## Technical Requirements
 
-- **Python**: 3.8+
-- **Django**: 3.2+
-- **MySQL**: 8.0+
+- **Python**
+- **Django**
 - **HTML5**
 - **CSS3**
+- **javascript**
 
 ## Installation
 

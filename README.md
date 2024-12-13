@@ -33,7 +33,7 @@ To run the application locally:
    
 2. Navigate to the project directory:
    
-   cd online-shopping-system
+   cd Online Shop
    
 3. Install dependencies:
    
